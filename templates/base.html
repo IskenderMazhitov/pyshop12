@@ -22,15 +22,22 @@
       <a href=" {% url 'logout'%} "> Logout </a>
       {% endif %}
 <!--    End Is Authenticated -->
-      <a href="{% url 'create-product' %}"><img style="width: 20px; height: auto;" src="{% static 'img/plus (1).png' %}" ></a>
 
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      {% if request.user.is_authenticated and request.user.is_superuser %}
+      <a href="{% url 'create-product' %}"><img style="width: 20px; height: auto;" src="{% static 'img/plus (1).png' %}" ></a>
+        {% endif %}
+<!--Search-->
+    <form class="d-flex" method="get" action="{% url 'search' %}">
+
+      <input name='q' value='Search' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
+      <!--Search end-->
+      <!-- Navbar end -->
   </div>
 </nav>
-<!-- Navbar end -->
+
+
 
     {% block content %}
 
