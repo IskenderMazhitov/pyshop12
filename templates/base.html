@@ -26,6 +26,7 @@
       {% if request.user.is_authenticated and request.user.is_superuser %}
       <a href="{% url 'create-product' %}"><img style="width: 20px; height: auto;" src="{% static 'img/plus (1).png' %}" ></a>
         {% endif %}
+      <a href='{% url "cart_detail"%}'> <img style="width:80px; height: 80px"src="{% static 'img/sports-car.png' %}"></a>
 <!--Search-->
     <form class="d-flex" method="get" action="{% url 'search' %}">
 

@@ -13,6 +13,7 @@
           <h4 class="card-title"><a href="{% url 'detail' product.id %}">{{ product.name }}</a></h4>
           <p class="card-text">{{ product.description|truncatechars:150 }}</p>
           <p class="card-text"><small class="text-muted">{{ product.price }} сом.</small></p>
+          <a class="btn btn-success" href="{% url 'cart_add' product.id %}" role="button"> Add to cart</a>
         </div>
       </div>
     </div>
@@ -31,6 +32,7 @@
       <a class="page-link" href="{% url 'list' category %}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
+      {% endfor %}
       {% endif %}
       <!-- END PREVIOUS BUTTON -->
     </li>
@@ -45,5 +47,6 @@
   </ul>
 </nav>
 <!-- End Pagination -->
+{% endif %}
 {% endif %}
   {% endblock %}
